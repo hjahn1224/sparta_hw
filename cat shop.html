@@ -1,0 +1,115 @@
+<html>
+<head>
+	<title>캣프렌즈 쇼핑몰</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<style>
+	.main_image {
+	background-image: url(https://i.pinimg.com/originals/e2/3b/48/e23b480f7d5eb3d7f35140dfad6f6c70.png);
+	background-size: cover;
+	width: 700px;
+	height: 700px;
+
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+	}
+	button{
+		margin: 5px 5px 5px 5px
+	}
+
+	.centered { 
+		display: table; 
+		margin-left: auto; 
+		margin-right: auto; 
+		margin-top: auto;
+		margin-bottom: 30;
+		}
+	
+	.info {
+		margin: 20px 20px;
+		padding: 20px 20px 20px 20px
+		}
+
+	.box-container{
+		border: 2px solid ;
+		margin: 20px 20px;
+		padding: 20px 20px 20px 20px;
+		}
+
+	</style>
+	<script type="text/javascript">
+		function basket(){
+			alert('장바구니에 담겼습디다.')
+		}
+		function sold_out(){
+			alert('상품이 품절되었습니다.')
+		}
+	</script>
+
+</head>
+<body>
+	<div class="main_image">
+	
+	</div>
+	
+	<div class="info">
+		<h2><strong>안사고 뭐하냥? 가리가리 6종 모음전</strong></h2>
+		<p>가격 1,000,000원</p>
+		<p>냥이들 즐거움 극대화! 고양이들의 오감을 만족시킬 최고의 선물! <br>집사도 만족하는 세련된 디자인까지 완벽한 가리가리 플레이를 10% 할인된 가격으로 만나보세요! </p>
+	</div>
+
+	<div class="box-container">
+		<h4>주문 정보</h4>
+		<br>
+			<div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="inputEmail4">받는 사람 </label>
+			      <input type="text" class="form-control" id="inputEmail4" placeholder="이름 입력">
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label for="exampleFormControlSelect1">수량선택</label>
+			   <select class="form-control" id="exampleFormControlSelect1">
+			     <option>1</option>
+			      <option>2</option>
+			      <option>3</option>
+			      <option>4</option>
+			      <option>5</option>
+			    </select>
+  			</div>
+			
+			<div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="inputEmail4">배송지</label>
+			      <input type="text" class="form-control" id="inputEmail4" placeholder="도로명 주소 입력">
+			    </div>
+			</div>
+
+			<div class="form-row">
+			    <div class="form-group col-md-6">
+			      <label for="inputEmail4">연락처 </label>
+			      <input type="text" class="form-control" id="inputEmail4" placeholder="숫자만 입력">
+			    </div>
+			</div>
+		
+		
+
+	</div>
+	<div class="centered">
+		<button onclick="basket()" type="button" class="btn btn-outline-primary btn-lg">장바구니</button>
+		<button onclick="sold_out()" type="button" class="btn btn-primary btn-lg">바로구매
+		</button>
+		<br>
+	</div>
+
+</body>
+</html>
