@@ -8,21 +8,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script>
-		function order(){
-			let name = $('#input-name').val();
-			let count = $('#input-count').val();
-			let address = $('#input-address').val();
-			let phone = $('#input-phone').val();
-
-		    $('#ordertable').html();
+		
+    $(document).ready(function(){
+      $('#ordertable').html('');
+      order();
+    });
+  		
+    	function order(){
 
         $.ajax({
           type: "GET",
           url: "http://spartacodingclub.shop/order/",
-          data: {name:"name" count:"count" address:"address" phone:"phone"},
+          data: {},
           success: function(response){
               let order = response['orders'];
-              $('#ordertable').empty();
               for (let i = 0 ; i < orders.length; i++){
                 let ordername = orders[i]['name'];
                 let ordercount = orders[i]['count'];
@@ -39,6 +38,20 @@
               }
             }
         })
+
+
+			let name = $('#input-name').val();
+			let count = $('#input-count').val();
+			let address = $('#input-address').val();
+			let phone = $('#input-phone').val();
+
+		     let temp = '<tr>\
+	                            <td>'+name+'</td>\
+	                            <td>'+count+'</td>\
+	                            <td>'+address+'</td>\
+							    <td>'+phone+'</td>\
+							  </tr>'
+                 $('#ordertable').append(temp);
     }
 	</script>
 
