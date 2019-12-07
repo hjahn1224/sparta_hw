@@ -4,11 +4,44 @@
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
+	<script>
+		function order(){
+			let name = $('#input-name').val();
+			let count = $('#input-count').val();
+			let address = $('#input-address').val();
+			let phone = $('#input-phone').val();
+
+		    $('#ordertable').html();
+
+        $.ajax({
+          type: "GET",
+          url: "http://spartacodingclub.shop/order/",
+          data: {name:"name" count:"count" address:"address" phone:"phone"},
+          success: function(response){
+              let order = response['orders'];
+              $('#ordertable').empty();
+              for (let i = 0 ; i < orders.length; i++){
+                let ordername = orders[i]['name'];
+                let ordercount = orders[i]['count'];
+                let orderaddress = orders[i]['address'];
+                let orderphone = orders[i]['phone'];
+
+                let temp_html = '<tr>\
+	                                 <td>'+ordername+'</td>\
+	                                 <td>'+ordercount+'</td>\
+	                                 <td>'+orderaddress+'</td>\
+									 <td>'+orderphone+'</td>\
+									 </tr>'
+                 $('#ordertable').append(temp_html);
+              }
+            }
+        })
+    }
+	</script>
+
 	<style>
 	.main_image {
 	background-image: url(https://i.pinimg.com/originals/e2/3b/48/e23b480f7d5eb3d7f35140dfad6f6c70.png);
@@ -45,14 +78,6 @@
 		}
 
 	</style>
-	<script type="text/javascript">
-		function basket(){
-			alert('장바구니에 담겼습니다.')
-		}
-		function sold_out(){
-			alert('상품이 품절되었습니다.')
-		}
-	</script>
 
 </head>
 <body>
@@ -72,13 +97,13 @@
 			<div class="form-row">
 			    <div class="form-group col-md-6">
 			      <label for="inputEmail4">받는 사람 </label>
-			      <input type="text" class="form-control" id="inputEmail4" placeholder="이름 입력">
+			      <input type="text" id="input-name" class="form-control" placeholder="이름 입력">
 			    </div>
 			</div>
 
 			<div class="form-group">
 			  <label for="exampleFormControlSelect1">수량선택</label>
-			   <select class="form-control" id="exampleFormControlSelect1">
+			   <select id="input-count" class="form-control">
 			     <option>1</option>
 			      <option>2</option>
 			      <option>3</option>
@@ -90,14 +115,14 @@
 			<div class="form-row">
 			    <div class="form-group col-md-6">
 			      <label for="inputEmail4">배송지</label>
-			      <input type="text" class="form-control" id="inputEmail4" placeholder="도로명 주소 입력">
+			      <input type="text" id="input-address" class="form-control" placeholder="도로명 주소 입력">
 			    </div>
 			</div>
 
 			<div class="form-row">
 			    <div class="form-group col-md-6">
 			      <label for="inputEmail4">연락처 </label>
-			      <input type="text" class="form-control" id="inputEmail4" placeholder="숫자만 입력">
+			      <input type="text" id="input-phone" class="form-control" placeholder="숫자만 입력">
 			    </div>
 			</div>
 		
@@ -105,9 +130,24 @@
 
 	</div>
 	<div class="centered">
-		<button onclick="sold_out()" type="button" class="btn btn-primary btn-lg">바로구매
+		<button onclick="order()" type="button" class="btn btn-primary btn-lg">주문하기
 		</button>
 		<br>
+	</div>
+
+	<div class="info">
+		<table class="table">
+		  <thead>
+		    <tr>
+		      <th scope="col">이름</th>
+		      <th scope="col">수량</th>
+		      <th scope="col">배송지</th>
+		      <th scope="col">연락처</th>
+		    </tr>
+		  </thead>
+		  <tbody id="ordertable">
+		  </tbody>
+		</table>
 	</div>
 
 </body>
